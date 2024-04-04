@@ -2,6 +2,7 @@ from csv import reader
 from datetime import datetime
 from domain.accelerometer import Accelerometer
 from domain.gps import Gps
+from domain.parking import Parking
 from domain.aggregated_data import AggregatedData
 import config
 
@@ -54,7 +55,7 @@ class FileDatasource:
         return AggregatedData(
             Accelerometer(*accelerometer_data),
             Gps(*gps_data),
-            # Parking(parking_data, Gps(*gps_data)),
+            Parking(parking_data, Gps(*gps_data)),
             datetime.now(),
             config.USER_ID,
         )
